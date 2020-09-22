@@ -1,4 +1,4 @@
-"""file_manager URL Configuration
+"""dms URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -24,6 +24,6 @@ urlpatterns = [
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-admin.site.site_header = "File Manager"
-admin.site.site_title = "File Manager"
+admin.site.site_header = "Document Manager"
+admin.site.site_title = "Document Manager"
 admin.site.index_title = "Admin"
