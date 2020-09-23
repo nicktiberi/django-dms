@@ -12,7 +12,7 @@ class ArtistAdmin(admin.ModelAdmin):
 
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
-	list_display = ["title", "file", "artist"]
+	list_display = ["title", "file", "document_type", "artist"]
 	list_filter = ["artist", "document_type", "tags"]
 	ordering = ["title", "artist__name"]
 	search_fields = ["title", "artist__name", "tags__name"]
