@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import mark_safe
 
 from .models import Artist
 from .models import Document
@@ -12,10 +13,18 @@ class ArtistAdmin(admin.ModelAdmin):
 
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
-	list_display = ["title", "file", "document_type", "artist"]
+	list_display = ["title", "file_link", "document_type", "date", "artist"]
 	list_filter = ["artist", "document_type", "tags"]
 	ordering = ["title", "artist__name"]
 	search_fields = ["title", "artist__name", "tags__name"]
+
+	def file_link(self, obj):
+		if obj.file:
+			return mark_safe("<a href=\"{0}\">Download</a>".format(obj.file.url))
+		else:
+			return "-"
+
+	file_link.short_description = "File"
 
 @admin.register(DocumentType)
 class DocumentTypeAdmin(admin.ModelAdmin):
