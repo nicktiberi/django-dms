@@ -6,13 +6,13 @@ def file_upload_path(instance, filename):
 	return "uploads/{0}/{1}".format(instance.document_type.name, filename)
 
 class Artist(models.Model):
-	name = models.CharField(max_length = 200)
+	name = models.CharField(max_length = 200, unique = True)
 
 	def __str__(self):
 		return self.name
 
 class DocumentType(models.Model):
-	name = models.CharField(max_length = 200)
+	name = models.CharField(max_length = 200, unique = True)
 
 	class Meta:
 		verbose_name = "Document Type"
@@ -21,7 +21,7 @@ class DocumentType(models.Model):
 		return self.name
 
 class Tag(models.Model):
-	name = models.CharField(max_length = 200)
+	name = models.CharField(max_length = 200, unique = True)
 	
 	def __str__(self):
 		return self.name
